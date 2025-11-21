@@ -1,1 +1,2 @@
 # younaproject
+All rights reserved
