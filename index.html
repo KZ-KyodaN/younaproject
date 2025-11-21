@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>YouNa Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<div id="info-modal-backdrop" style="display:none;
+position:fixed;inset:0;background:rgba(0,0,0,0.6);
+backdrop-filter:blur(8px);z-index:999;align-items:center;justify-content:center;">
+  <div id="info-modal" style="background:#0b0616;border:1px solid rgba(255,255,255,0.1);
+padding:20px;border-radius:16px;max-width:420px;width:90%;color:#fff;font-family:system-ui;">
+    <h2 style="margin-top:0;">System Info</h2>
+    <pre id="info-content" style="white-space:pre-wrap;font-size:14px;background:#0f0a1a;
+padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);"></pre>
+    <button id="info-close">
+      Close
+    </button>
+  </div>
+</div>
+<div id="rt-modal-backdrop" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+">
+  <div id="rt-modal" style="
+      background:#0b0616;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:16px;
+      padding:18px 20px 16px;
+      max-width:420px;
+      width:90%;
+      color:#f4e9ff;
+      font-family:system-ui,-apple-system,sans-serif;
+      box-shadow:0 20px 40px rgba(0,0,0,0.7);
+  ">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <h2 style="margin:0;font-size:1.1rem;letter-spacing:0.06em;text-transform:uppercase;">
+        Reaction Time Test
+      </h2>
+      <button id="rt-close" type="button" style="
+          border-radius:999px;
+          border:1px solid rgba(255,255,255,0.2);
+          background:rgba(5,2,15,0.9);
+          color:#f4e9ff;
+          width:28px;
+          height:28px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          font-size:1rem;
+          padding:0;
+      ">×</button>
+    </div>
+
+    <p id="rt-text" style="margin:0 0 10px;font-size:0.9rem;">
+      Click the box to start. Wait for green, then click as fast as you can.
+    </p>
+
+    <div id="rt-box" style="
+        width:100%;
+        height:170px;
+        border-radius:12px;
+        background:#2a2a2a;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#ffffff;
+        font-size:1.2rem;
+        user-select:none;
+        transition:background 0.1s ease;
+        margin-bottom:8px;
+    ">
+      CLICK TO START
+    </div>
+
+    <div id="rt-result" style="font-size:0.9rem;opacity:0.85;">
+      Best: - ms
+    </div>
+  </div>
+</div>
+<div id="cps-modal-backdrop" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
+    z-index:999;
+    align-items:center;
+    justify-content:center;
+">
+  <div id="cps-modal" style="
+      background:#0b0616;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:16px;
+      padding:18px 20px 16px;
+      max-width:420px;
+      width:90%;
+      color:#f4e9ff;
+      font-family:system-ui,-apple-system,sans-serif;
+      box-shadow:0 20px 40px rgba(0,0,0,0.7);
+  ">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <h2 style="margin:0;font-size:1.1rem;letter-spacing:0.06em;text-transform:uppercase;">
+        CPS Test
+      </h2>
+      <button id="cps-close" type="button" style="
+          border-radius:999px;
+          border:1px solid rgba(255,255,255,0.2);
+          background:rgba(5,2,15,0.9);
+          color:#f4e9ff;
+          width:28px;
+          height:28px;
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          font-size:1rem;
+          padding:0;
+      ">×</button>
+    </div>
+
+    <p id="cps-text" style="margin:0 0 10px;font-size:0.9rem;">
+      Click inside the box as fast as you can for 5 seconds.
+    </p>
+
+    <div id="cps-box" style="
+        width:100%;
+        height:170px;
+        border-radius:12px;
+        background:#2a2a2a;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#ffffff;
+        font-size:1.2rem;
+        user-select:none;
+        transition:background 0.1s ease;
+        margin-bottom:8px;
+    ">
+      CLICK TO START
+    </div>
+
+    <div id="cps-result" style="font-size:0.9rem;opacity:0.85;">
+      Clicks: 0 | CPS: 0 | Best: - CPS
+    </div>
+  </div>
+</div>
+
+<body>
+    <header>
+        <h1>YouNa</h1>
+        <nav>
+            
+            <a href="https://t.me/youna_system" target="_blank" rel="noopener">Telegram</a>
+            <a href="https://mail.youna.uk">Mail</a>
+            <a href="#" id="osuBtn">osu!</a>
+            <a href="#" id="infoBtn">Info</a>
+            <a href="#" id="rtBtn">Reaction</a>
+            <a href="#" id="cpsBtn">CPS</a>
+
+
+            
+        </nav>
+    </header>
+    <main>
+        <section id="intro">
+            <p>Система под все твои нужды. В разработке</p>
+        </section>
+        <section id="features">
+            <h2>Доступно</h2>
+            <div class="card-track">
+                <div class="card">
+                    <strong>Почтовый сервис</strong>
+                    <span>Защищенный почтовый сервис, с ограниченным пакетом данных, сильной шифровкой. Создан и доработан на основе Mailu. Для регистрации свяжитесь в Telegram с администратором</span>
+                </div>
+                <div class="card">
+                    <strong>Шифровая машина</strong>
+                    <span>UltimateCrypt - открытый self-host сайт для кастомизации и создания собственной пары шифровки. В стандартном режиме доступна шифровка по данным биржи, погоды, криптобиржи.</span>
+                </div>
+                <div class="card">
+                    <strong>KYO Crypt 1.0</strong>
+                    <span>Схема шифрования PBKDF2-SHA256 -> AES-256-GCM. Позволяет строго защищать данные. Чем больше итерации - тем больше защищены данные</span>
+                </div>
+            </div>
+            <div class="actions">
+                <button id="actionBtn">Сервисы</button>
+            </div>
+        </section>
+    </main>
+
+<script src="main.js"></script>
+<script src="osu.js"></script>
+<script src="kyo.js"></script>
+<script src="info.js"></script>
+<script>
+document.getElementById("osuBtn").addEventListener("click", e => {
+    e.preventDefault();
+    startOsuGame();
+});
+</script>
+<div id="kyo-crypt" style="max-width:720px;margin:2rem auto;padding:1rem 1.5rem;border-radius:16px;background:#0b0616;color:#f4e9ff;font-family:system-ui, -apple-system, sans-serif;border:1px solid rgba(255,255,255,0.08);box-shadow:0 20px 40px rgba(0,0,0,0.6);">
+  <h2 id="kyo-title" style="margin-top:0;">KYO Crypt v1</h2>
+  <div style="padding:0.75rem 1rem;border-radius:12px;background:rgba(255,58,167,0.08);border:1px solid rgba(255,58,167,0.4);margin-bottom:1rem;">
+    <strong id="kyo-warning-title" style="display:block;margin-bottom:0.4rem;color:#ff5cb8;">
+      ВНИМАНИЕ: ОБЯЗАТЕЛЬНО НАСТРОЙ КОНФИГ ПОД СЕБЯ
+    </strong>
+    <ul style="margin:0;padding-left:1.2rem;font-size:0.9rem;color:#f4e9ff;">
+      <li id="kyo-warning-1">Смени <code>App ID (pepper)</code> на свой</li>
+      <li id="kyo-warning-2">Если потеряешь <code>App ID</code>, расшифровать свои данные не получится.</li>
+      <li id="kyo-warning-3">Кто угодно может украсть этот скрипт, но без <code>AppID</code> хуй им на рыло, шифруй смело.</li>
+    </ul>
+  </div>
+  <div style="margin-bottom:1rem;">
+    <label id="kyo-password-label" style="display:block;font-size:0.9rem;margin-bottom:0.25rem;">Пароль:</label>
+    <input id="kyo-password" type="password" style="width:100%;padding:0.4rem 0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#05020c;color:#f4e9ff;">
+  </div>
+  <div style="margin-bottom:1rem;display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+    <div>
+      <label id="kyo-appid-label" style="display:block;font-size:0.85rem;margin-bottom:0.25rem;">App ID (pepper):</label>
+      <input id="kyo-appid" type="text" value="KYO-DEFAULT-APPID-CHANGE-ME" style="width:100%;padding:0.35rem 0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#05020c;color:#f4e9ff;font-size:0.85rem;">
+    </div>
+    <div>
+      <label id="kyo-iter-label" style="display:block;font-size:0.85rem;margin-bottom:0.25rem;">KDF iterations (PBKDF2-SHA256):</label>
+      <input id="kyo-iter" type="number" value="120000" min="50000" max="500000" step="1000" style="width:100%;padding:0.35rem 0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#05020c;color:#f4e9ff;font-size:0.85rem;">
+    </div>
+  </div>
+  <button id="kyo-random-config" type="button" style="margin-bottom:1rem;padding:0.45rem 0.9rem;border-radius:999px;border:1px solid rgba(255,255,255,0.2);background:linear-gradient(135deg,#ff3aa7,#a855ff);color:#05020c;font-weight:600;cursor:pointer;">
+    🎲 Random config
+  </button>
+  <div style="margin-bottom:0.75rem;">
+    <label id="kyo-input-label" style="display:block;font-size:0.9rem;margin-bottom:0.25rem;">Input:</label>
+    <textarea id="kyo-input" rows="5" style="width:100%;padding:0.5rem 0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#05020c;color:#f4e9ff;font-family:monospace;font-size:0.9rem;"></textarea>
+  </div>
+  <div style="display:flex;gap:0.75rem;margin-bottom:0.75rem;">
+    <button id="kyo-encrypt" type="button" style="flex:1;padding:0.45rem 0.9rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:linear-gradient(135deg,#22c55e,#4ade80);color:#020617;font-weight:600;cursor:pointer;">
+      Encrypt
+    </button>
+    <button id="kyo-decrypt" type="button" style="flex:1;padding:0.45rem 0.9rem;border-radius:10px;border:1px solid rgba(255,255,255,0.2);background:linear-gradient(135deg,#38bdf8,#0ea5e9);color:#020617;font-weight:600;cursor:pointer;">
+      Decrypt
+    </button>
+  </div>
+  <div>
+    <label id="kyo-output-label" style="display:block;font-size:0.9rem;margin-bottom:0.25rem;">Output:</label>
+    <textarea id="kyo-output" rows="5" readonly style="width:100%;padding:0.5rem 0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:#020617;color:#f4e9ff;font-family:monospace;font-size:0.9rem;"></textarea>
+  </div>
+</div>
+    <div style="margin-top:0.9rem;text-align:center;">
+  </div>
+</div>
+
+</div>
+
+    <footer>
+        KyodaN · YouNa Project 2025 · Support: support@youna.uk
+    </footer>
+
+</body>
+</html>

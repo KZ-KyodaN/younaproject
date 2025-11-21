@@ -1,0 +1,39 @@
+en: {
+    intro: 'A system for all your needs. In development.',
+    featuresTitle: 'Available now',
+    mailTitle: 'Mail service',
+    mailDescription: 'A secure mail service with limited data exposure and strong encryption. Built and refined on top of Mailu. To register, contact the administrator via Telegram.',
+    cipherTitle: 'Cipher machine',
+    cipherDescription: 'UltimateCrypt is an open self-hosted site for customizing and creating your own encryption pair. By default you can encrypt using stock, weather, and crypto exchange data.',
+    devTitle: 'KYO Crypt 1.0',
+    devDescription: 'Encryption scheme: PBKDF2-SHA256 → AES-256-GCM. Provides strong authenticated encryption. Increasing the PBKDF2 iteration count makes brute-force attacks significantly harder.',
+    servicesButton: 'Services',
+    modalTitle: 'YouNa Services',
+    modalHelper: 'New services will appear here as they are developed.',
+    openLabel: 'Open',
+    services: {
+        mail: {
+            name: 'Mail service',
+            description: 'Secure mail service based on Mailu. To register, contact the administrator.'
+        },
+        cipher: {
+            name: 'Cipher machine',
+            description: 'UltimateCrypt is a self-hosted solution for custom encryption using real-time data.'
+        }
+    },
+
+    // ↓↓↓ KYO BLOCK ↓↓↓
+    kyoTitle: 'KYO Crypt v1',
+    kyoWarningTitle: 'WARNING: YOU MUST CONFIGURE YOUR SETTINGS',
+    kyoWarning1: 'Change your <code>App ID (pepper)</code> to your own.',
+    kyoWarning2: 'If you lose your <code>App ID</code>, you will not be able to decrypt your data.',
+    kyoWarning3: 'Anyone can copy this script, but without <code>AppID</code> they get nothing. Encrypt safely.',
+    kyoPassword: 'Password:',
+    kyoAppId: 'App ID (pepper) – SECRET STRING:',
+    kyoIterations: 'KDF iterations (PBKDF2-SHA256):',
+    kyoInputLabel: 'Input (plain text OR encrypted KYO1:...):',
+    kyoEncryptBtn: 'Encrypt → KYO1:...',
+    kyoDecryptBtn: 'Decrypt → text',
+    kyoOutputLabel: 'Output:',
+    kyoRandomConfig: '🎲 Random config'
+}

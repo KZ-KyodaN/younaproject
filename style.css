@@ -1,0 +1,178 @@
+        :root {
+            --bg: #06030d;
+            --panel: rgba(255, 255, 255, 0.04);
+            --accent: #ff3aa7;
+            --accent-2: #a855ff;
+            --text: #f4e9ff;
+            --muted: #b7a9d6;
+            --glow: 0 0 24px rgba(255, 58, 167, 0.6), 0 0 36px rgba(168, 85, 255, 0.45);
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(168, 85, 255, 0.16), transparent 35%), radial-gradient(circle at 80% 10%, rgba(255, 58, 167, 0.18), transparent 32%), linear-gradient(145deg, #090415 0%, #05020c 50%, #090316 100%);
+            color: var(--text);
+            font-family: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            padding: 2.5rem clamp(1.2rem, 2vw, 2.4rem) 3rem;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            margin: 0;
+            font-size: clamp(1.9rem, 3vw, 2.6rem);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 18px rgba(168, 85, 255, 0.55);
+        }
+        nav {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            position: relative;
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 0.85rem;
+            border: 1px solid rgba(255, 58, 167, 0.35);
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255, 58, 167, 0.3), rgba(168, 85, 255, 0.25));
+            backdrop-filter: blur(8px);
+            box-shadow: var(--glow);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+        nav a:hover {
+            transform: translateY(-2px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 28px rgba(255, 58, 167, 0.75), 0 0 42px rgba(168, 85, 255, 0.55);
+        }
+        main {
+            display: grid;
+            gap: 1.5rem;
+        }
+        section {
+            padding: 1.75rem;
+            border-radius: 18px;
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), inset 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+        #intro p {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--muted);
+        }
+        #features h2 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+            color: #fff;
+        }
+        ul {
+            padding-left: 1.2rem;
+            margin: 0 0 1rem 0;
+            color: var(--text);
+        }
+        li + li { margin-top: 0.25rem; }
+        .card-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .card {
+            padding: 1rem;
+            border-radius: 14px;
+            background: linear-gradient(140deg, rgba(255, 58, 167, 0.1), rgba(168, 85, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: var(--glow);
+        }
+        .card strong { display: block; margin-bottom: 0.25rem; color: #fff; }
+        img {
+            width: 100%;
+            max-width: 360px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), var(--glow);
+        }
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        button {
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: linear-gradient(135deg, #ff3aa7, #a855ff);
+            color: #0a0412;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.01em;
+            box-shadow: var(--glow);
+            transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+        }
+        button:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 0 28px rgba(255, 58, 167, 0.85), 0 0 46px rgba(168, 85, 255, 0.65);
+            filter: brightness(1.05);
+        }
+        #status {
+            color: var(--muted);
+            min-width: 9ch;
+        }
+        footer {
+            margin-top: 2rem;
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+        }
+        @media (max-width: 640px) {
+            header { flex-direction: column; align-items: flex-start; }
+            nav { width: 100%; }
+            nav a { flex: 1; text-align: center; }
+            section { padding: 1.4rem; }
+        }
+        @-webkit-keyframes flip-scale-up-diag-2 {
+  0% {
+    -webkit-transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotate3d(-1, 1, 0, 90deg);
+            transform: scale(2.5) rotate3d(-1, 1, 0, 90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate3d(-1, 1, 0, 180deg);
+            transform: scale(1) rotate3d(-1, 1, 0, 180deg);
+  }
+}
+@keyframes flip-scale-up-diag-2 {
+  0% {
+    -webkit-transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+            transform: scale(1) rotate3d(-1, 1, 0, 0deg);
+  }
+  50% {
+    -webkit-transform: scale(2.5) rotate3d(-1, 1, 0, 90deg);
+            transform: scale(2.5) rotate3d(-1, 1, 0, 90deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate3d(-1, 1, 0, 180deg);
+            transform: scale(1) rotate3d(-1, 1, 0, 180deg);
+  }
+  .my-element {
+  animation: flip-scale-up-diag-2 1s ease forwards;
+}
+
+}
